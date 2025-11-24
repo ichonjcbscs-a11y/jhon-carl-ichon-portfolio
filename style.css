@@ -1,0 +1,111 @@
+/* === Skills section styles ===
+   Append these rules to your existing style.css.
+   They style the new Skills section added to index.html.
+*/
+
+/* visually-hidden utility for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skills {
+  margin-top: 2rem;
+}
+
+/* container inside card already provides padding; ensure spacing */
+.skills .skills-intro {
+  margin: 0 0 0.75rem 0;
+  color: #6b7280; /* neutral text */
+  font-size: 0.95rem;
+}
+
+/* list layout */
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+/* each skill row */
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* top row: icon, name, textual proficiency */
+.skill-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  color: #0f172a; /* near-black */
+  font-size: 1rem;
+}
+
+/* small icon */
+.skill-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+/* secondary descriptive text */
+.skill-text {
+  margin-left: 0.5rem;
+  font-weight: 400;
+  color: #374151; /* gray-700 */
+  font-size: 0.95rem;
+}
+
+/* progress bar container */
+.skill-bar {
+  width: 100%;
+  height: 12px;
+  background: linear-gradient(90deg, rgba(15,23,42,0.06), rgba(15,23,42,0.04));
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+/* colored fill indicating proficiency */
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(90deg,#06b6d4,#3b82f6); /* teal -> blue */
+  border-radius: 999px;
+  transition: width 600ms cubic-bezier(.2,.8,.2,1);
+}
+
+/* responsive — side-by-side on larger screens */
+@media (min-width: 880px) {
+  .skills-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skill-item {
+    max-width: 48rem;
+  }
+}
+
+/* small polish for card look in dark/light themes if present */
+.card.card-glow .skills .skill-meta,
+.card.card-glow .skills .skill-text {
+  /* if the card sets a background and text color, inherit; these rules avoid too faint text */
+  color: inherit;
+}
+
+/* reduce motion for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .skill-fill {
+    transition: none;
+  }
+}
